@@ -31,7 +31,7 @@ def home():
     cron = CronTab(user=app.config['USER'])
     cron_data = {}
     for job in cron:
-        if 'morning-light.sh' in job.command and job.is_enabled:
+        if 'morning-light.sh' in job.command:
             cron_data[job.comment] = {
                 'job': job,
                 'selected_option': calculate_selected_option(job)
