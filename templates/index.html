@@ -10,48 +10,17 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="cell">{{ items[0][0] }}</div>
-            <div class="cell button disabled" onclick="selectOption(this)">{{ config['DISABLED'] }}</div>
-            <div class="cell button option1" onclick="selectOption(this)">{{ config['SCHEDULE_1'] }}</div>
-            <div class="cell button option2" onclick="selectOption(this)">{{ config['SCHEDULE_2'] }}</div>
-        </div>
-        <div class="row">
-            <div class="cell">{{ items[1][0] }}</div>
-            <div class="cell button disabled" onclick="selectOption(this)">{{ config['DISABLED'] }}</div>
-            <div class="cell button option1" onclick="selectOption(this)">{{ config['SCHEDULE_1'] }}</div>
-            <div class="cell button option2" onclick="selectOption(this)">{{ config['SCHEDULE_2'] }}</div>
-        </div>
-        <div class="row">
-            <div class="cell">{{ items[2][0] }}</div>
-            <div class="cell button disabled" onclick="selectOption(this)">{{ config['DISABLED'] }}</div>
-            <div class="cell button option1" onclick="selectOption(this)">{{ config['SCHEDULE_1'] }}</div>
-            <div class="cell button option2" onclick="selectOption(this)">{{ config['SCHEDULE_2'] }}</div>
-        </div>
-        <div class="row">
-            <div class="cell">{{ items[3][0] }}</div>
-            <div class="cell button disabled" onclick="selectOption(this)">{{ config['DISABLED'] }}</div>
-            <div class="cell button option1" onclick="selectOption(this)">{{ config['SCHEDULE_1'] }}</div>
-            <div class="cell button option2" onclick="selectOption(this)">{{ config['SCHEDULE_2'] }}</div>
-        </div>
-        <div class="row">
-            <div class="cell">{{ items[4][0] }}</div>
-            <div class="cell button disabled" onclick="selectOption(this)">{{ config['DISABLED'] }}</div>
-            <div class="cell button option1" onclick="selectOption(this)">{{ config['SCHEDULE_1'] }}</div>
-            <div class="cell button option2" onclick="selectOption(this)">{{ config['SCHEDULE_2'] }}</div>
-        </div>
-        <div class="row">
-            <div class="cell">{{ items[5][0] }}</div>
-            <div class="cell button disabled" onclick="selectOption(this)">{{ config['DISABLED'] }}</div>
-            <div class="cell button option1" onclick="selectOption(this)">{{ config['SCHEDULE_1'] }}</div>
-            <div class="cell button option2" onclick="selectOption(this)">{{ config['SCHEDULE_2'] }}</div>
-        </div>
-        <div class="row">
-            <div class="cell">{{ items[6][0] }}</div>
-            <div class="cell button disabled" onclick="selectOption(this)">{{ config['DISABLED'] }}</div>
-            <div class="cell button option1" onclick="selectOption(this)">{{ config['SCHEDULE_1'] }}</div>
-            <div class="cell button option2" onclick="selectOption(this)">{{ config['SCHEDULE_2'] }}</div>
-        </div>
+        {% for key, value in cron_data.items() %}
+            <div class="row">
+                <div class="cell">{{ cron_data[key]['job'].comment }}</div>
+                <div class="cell button disabled {{ 'selected' if cron_data[key]['selected_option'] == config['DISABLED'] else '' }}" 
+                onclick="selectOption(this)">{{ config['DISABLED'] }}</div>
+                <div class="cell button option1 {{ 'selected' if cron_data[key]['selected_option'] == config['SCHEDULE_1'] else '' }}"
+                onclick="selectOption(this)">{{ config['SCHEDULE_1'] }}</div>
+                <div class="cell button option2 {{ 'selected' if cron_data[key]['selected_option'] == config['SCHEDULE_2'] else '' }}"
+                onclick="selectOption(this)">{{ config['SCHEDULE_2'] }}</div>
+            </div>
+        {% endfor %}
     </div>
 </body>
 </html>
