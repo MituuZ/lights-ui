@@ -31,7 +31,7 @@ def home():
     cron = CronTab(user=app.config['USER'])
     cron_data = {}
     for job in cron:
-        if 'morning-light.sh' in job.command:
+        if app.config['SCRIPT_IDENTIFIER'] in job.command:
             cron_data[job.comment] = {
                 'job': job,
                 'selected_option': calculate_selected_option(job)
@@ -47,7 +47,7 @@ def update_cron():
 
     cron = CronTab(user=app.config['USER'])
     for job in cron:
-        if 'morning-light.sh' in job.command and job.comment == job_comment:
+        if app.config['SCRIPT_IDENTIFIER'] in job.command and job.comment == job_comment:
             day_of_week = job.dow
             job.enable()
             if schedule == app.config['SCHEDULE_1']:
@@ -65,7 +65,7 @@ def disable_cron():
 
     cron = CronTab(user=app.config['USER'])
     for job in cron:
-        if 'morning-light.sh' in job.command and job.comment == job_comment:
+        if app.config['SCRIPT_IDENTIFIER'] in job.command and job.comment == job_comment:
             job.enable(False)
             cron.write()
             return jsonify({'status': 'success', 'message': 'Cron job disabled: ' + job_comment})

@@ -8,4 +8,5 @@ class Config:
     SCHEDULE_2_MINUTE = 00
     SCHEDULE_DESCRIPTION = 'Lights go on at: '
     SITE_DESCRIPTION = 'Weekly Schedule'
+    SCRIPT_IDENTIFIER = 'Script snippet to identify the correct cronjob'
     USER = 'user'
