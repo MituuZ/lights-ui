@@ -7,4 +7,5 @@ class Config:
     SCHEDULE_2_HOUR = 11
     SCHEDULE_2_MINUTE = 00
     SCHEDULE_DESCRIPTION = 'Lights go on at: '
+    SITE_DESCRIPTION = 'Weekly Schedule'
     USER = 'user'
