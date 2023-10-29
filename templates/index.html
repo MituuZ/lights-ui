@@ -12,7 +12,7 @@
     <div class="container">
         {% for key, value in cron_data.items() %}
             <div class="row">
-                <div class="cell">{{ key }}</div>
+                <div class="cell title">{{ key }}</div>
                 <div class="cell button disabled {{ 'selected' if cron_data[key]['selected_option'] == config['DISABLED'] else '' }}" 
                 onclick="selectOption(this, '{{ key }}', 'disable')">{{ config['DISABLED'] }}</div>
                 <div class="cell button option1 {{ 'selected' if cron_data[key]['selected_option'] == config['SCHEDULE_1'] else '' }}"
@@ -21,6 +21,12 @@
                 onclick="selectOption(this, '{{ key }}', '{{ config['SCHEDULE_2'] }}')">{{ config['SCHEDULE_2'] }}</div>
             </div>
         {% endfor %}
+        <div class="row">
+            <div class="cell title">Info</div>
+            <div class="cell"></div>
+            <div class="cell">Lights go on at {{ config['SCHEDULE_1_HOUR'] }}:{{ config['SCHEDULE_1_MINUTE'] }}</div>
+            <div class="cell">Lights go on at {{ config['SCHEDULE_2_HOUR'] }}:{{ config['SCHEDULE_2_MINUTE'] }}</div>
+        </div>
     </div>
 </body>
 </html>
