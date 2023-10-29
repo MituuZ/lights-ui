@@ -24,8 +24,8 @@
         <div class="row">
             <div class="cell title">Info</div>
             <div class="cell"></div>
-            <div class="cell">Lights go on at {{ config['SCHEDULE_1_HOUR'] }}:{{ config['SCHEDULE_1_MINUTE'] }}</div>
-            <div class="cell">Lights go on at {{ config['SCHEDULE_2_HOUR'] }}:{{ config['SCHEDULE_2_MINUTE'] }}</div>
+            <div class="cell">{{ config['SCHEDULE_DESCRIPTION'] }} {{ config['SCHEDULE_1_HOUR'] }}:{{ config['SCHEDULE_1_MINUTE'] }}</div>
+            <div class="cell">{{ config['SCHEDULE_DESCRIPTION'] }} {{ config['SCHEDULE_2_HOUR'] }}:{{ config['SCHEDULE_2_MINUTE'] }}</div>
         </div>
     </div>
 </body>
