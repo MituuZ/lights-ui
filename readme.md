@@ -1,6 +1,8 @@
 # Lights UI
 A simple one page Flask application for controlling cronjobs through an UI.
 
+You can read up more details [here](https://mituuz.com/content/crontab_python_ui.html).
+
 # Flask
 Flask is a lightweight WSGI web application framework. It is designed to make getting started quick and easy, with the ability to scale up to complex applications.
 
