@@ -1,13 +1,88 @@
 # Lights UI
 A simple one-page Flask application for controlling a single cronjob.
 
-Provides a week view with three options per day to run the cronjob at timer 1, timer 2 or not at all.
+Provides a job view with three options to run the cronjob at Schedule 1, Schedule 2 or not at all. 
+You can mix and match the jobs as shown in the [examples](#examples).
+
+Supports as many cronjobs as necessary, provided they follow the correct structure.
 
 # Article
 I wrote an article about why and how I created this project, you can read it [here](https://mituuz.com/content/crontab_python_ui.html).
 
+# Configuring the project
+To start, you should copy the config_example.py and save it as config.py, this allows you to configure your setup,
+without changing any git tracked files.
+
+## Required configurations
+### User
+You need to give the correct user that has the cronjob defined that you want to control. (most likely your own username)
+
+### The cronjob
+**Note!** To work correctly, the cronjob's name (the comment above the actual declaration) must be a single "word".
+e.g. it shouldn't contain spaces
+
+You can add as many cronjobs as you want, but each of them should match the [script identifier](#script-identifier).
+
+#### Examples
+For these examples the script identifier is `hello`.
+
+The actual crontabs look like this after all the examples:
+```
+# HelloWorld
+0 5 * * * echo hello > ~/hello.txt
+# HelloWorkWeek
+0 5 * * 1-5 echo hello > ~/hello.txt
+# Sunday
+0 5 * * 0 echo hello > ~/hello.txt
+# Monday
+0 5 * * 1 echo hello > ~/hello.txt
+# Tuesday
+0 5 * * 2 echo hello > ~/hello.txt
+# Wednesday
+0 5 * * 3 echo hello > ~/hello.txt
+# Thursday
+0 5 * * 4 echo hello > ~/hello.txt
+# Friday
+0 5 * * 5 echo hello > ~/hello.txt
+# Saturday
+0 5 * * 6 echo hello > ~/hello.txt
+```
+
+##### Add a job that runs every day.
+```bash
+(crontab -l ; echo "# HelloWorld"; echo "0 5 * * * echo hello > ~/hello.txt") | crontab -
+```
+
+![](./assets/every-day-of-the-week.png)
+
+##### Add a job that runs from monday to friday
+```bash
+(crontab -l ; echo "# HelloWorkWeek"; echo "0 5 * * 1-5 echo hello > ~/hello.txt") | crontab -
+```
+
+![](./assets/work-week.png)
+
+##### Add a separate job for each day
+```bash
+(crontab -l ; echo "# Sunday"; echo "0 5 * * 0 echo hello > ~/hello.txt") | crontab -
+(crontab -l ; echo "# Monday"; echo "0 5 * * 1 echo hello > ~/hello.txt") | crontab -
+(crontab -l ; echo "# Tuesday"; echo "0 5 * * 2 echo hello > ~/hello.txt") | crontab -
+(crontab -l ; echo "# Wednesday"; echo "0 5 * * 3 echo hello > ~/hello.txt") | crontab -
+(crontab -l ; echo "# Thursday"; echo "0 5 * * 4 echo hello > ~/hello.txt") | crontab -
+(crontab -l ; echo "# Friday"; echo "0 5 * * 5 echo hello > ~/hello.txt") | crontab -
+(crontab -l ; echo "# Saturday"; echo "0 5 * * 6 echo hello > ~/hello.txt") | crontab -
+```
+
+![](./assets/job-per-day.png)
+
+### Script identifier
+To show the correct jobs in the UI, the command of the job must match this line. 
+This is used to fetch and modify the cronjob information.
+
 # Running the project
-Requires python3.
+Requires:
+- Python 3
+- [Some configurations](#required-configurations)
 
 ## Using venv
 If you've already created a venv, you can jump to [activating the virtual environment](#activating-the-virtual-environment).
