@@ -1,5 +1,5 @@
 # Lights UI
-A simple one-page Flask application for controlling a single cronjob.
+A simple one-page Flask application for controlling cronjobs.
 
 Provides a job view with three options to run the cronjob at Schedule 1, Schedule 2 or not at all. 
 You can mix and match the jobs as shown in the [examples](#examples).
