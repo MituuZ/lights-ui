@@ -10,7 +10,7 @@ class Config:
     SCHEDULE_2_HOUR = 11
     SCHEDULE_2_MINUTE = 00
     # Common description for the schedules, shown on the UI for both
-    SCHEDULE_DESCRIPTION = 'Lights go on at: '
+    SCHEDULE_DESCRIPTION = 'Run the cronjob at: '
     # Site title
     SITE_DESCRIPTION = 'Weekly Schedule'
     # A string that is used to match the cronjob's command to fetch correct jobs
