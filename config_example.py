@@ -14,6 +14,6 @@ class Config:
     # Site title
     SITE_DESCRIPTION = 'Weekly Schedule'
     # A string that is used to match the cronjob's command to fetch correct jobs
-    SCRIPT_IDENTIFIER = 'echo indetifiable script snippet'
-    # Used to get the cronjobs
+    SCRIPT_IDENTIFIER = 'echo identifiable script snippet'
+    # Used to get the cronjob
     USER = 'user'
