@@ -2,3 +2,5 @@ log.txt
 config.py
 __pycache__/
 venv
+.idea
+nohup.out
