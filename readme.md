@@ -39,7 +39,7 @@ I wrote an article about why and how I created this project, you can read it [he
     python3 app.py
     ```
 7. Access the UI
-    - Open your browser and go to http://localhost:5000.
+    - Open your browser and go to http://localhost:8090
 
 # Configuring the project
 To start, you should copy the config_example.py and save it as config.py, this allows you to configure your setup,
