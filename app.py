@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify, request
 from crontab import CronTab
 import os
 
+
 def calculate_selected_option(job):
     if not job.is_enabled():
         return app.config['DISABLED']
@@ -15,7 +16,9 @@ def calculate_selected_option(job):
             return app.config['SCHEDULE_2']
     return 'No match'
 
+
 app = Flask(__name__)
+
 
 @app.route('/')
 def home():
@@ -39,6 +42,7 @@ def home():
     
     return render_template('index.html', cron_data=cron_data)
 
+
 @app.route('/update_cron', methods=['POST'])
 def update_cron():
     data = request.json
@@ -58,6 +62,7 @@ def update_cron():
             return jsonify({'status': 'success', 'message': 'Cron job updated: ' + job_comment})
     return jsonify({'status': 'error', 'message': 'Cron job not found.'})
 
+
 @app.route('/disable_cron', methods=['POST'])
 def disable_cron():
     data = request.json
@@ -70,6 +75,7 @@ def disable_cron():
             cron.write()
             return jsonify({'status': 'success', 'message': 'Cron job disabled: ' + job_comment})
     return jsonify({'status': 'error', 'message': 'Cron job not found.'})
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8090)
