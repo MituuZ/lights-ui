@@ -1,6 +1,9 @@
 # Lights UI
 A simple one-page Flask application for controlling cronjobs.
 
+**Note!** This is only intended for local use; it is not suitable or safe to use in a production environment or 
+expose it to the internet without implementing proper security measures.
+
 Provides a job view with three options to run the cronjob at Schedule 1, Schedule 2 or not at all. 
 You can mix and match the jobs as shown in the [examples](#examples).
 
@@ -8,6 +11,35 @@ Supports as many cronjobs as necessary, provided they follow the correct structu
 
 # Article
 I wrote an article about why and how I created this project, you can read it [here](https://mituuz.com/content/crontab_python_ui.html).
+
+# Quick start
+1. Clone the repository
+    ```bash
+    git clone https://github.com/MituuZ/lights-ui.git
+    cd lights-ui
+    ```
+2. Create a virtual environment
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+3. Install dependencies
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Copy configurations
+    ```bash
+    cp config_example.py config.py
+    ```
+5. Set up config.py
+    - user
+    - script identifier
+6. Run the application
+    ```bash
+    python3 app.py
+    ```
+7. Access the UI
+    - Open your browser and go to http://localhost:5000.
 
 # Configuring the project
 To start, you should copy the config_example.py and save it as config.py, this allows you to configure your setup,
